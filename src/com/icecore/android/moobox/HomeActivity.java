@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////
 ///
-///	@file			: Home.java
+///	@file			: HomeActivity.java
 ///	@superclass		: Activity
-///	@description	: Home Activity
-///	@project		: Meuh
-///	@author			: Gaëtan de Villèle - Icecore 2010
+///	@description	: App's Home Activity
+///	@project		: MooBox
+///	@author			: Gaetan de Villele - Icecore 2010
 ///
 /////////////////////////////////////////////////////////////////
 
@@ -58,13 +58,13 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
         setContentView(R.layout.main);
         this.state = true;
         
-        // Inflate xml widgets
+        // Inflate xml views/widgets
         ll	= (LinearLayout) this.findViewById(R.id.ll);        
 
         // Disable the sleeping mode
         ll.setKeepScreenOn(true);
         
-        // Click // TODO : un bouton MEUH
+        // Set a click listener on the screen
         ll.setOnClickListener(this);
         
         // Sensor
@@ -181,7 +181,7 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.home, menu);
+	    inflater.inflate(R.menu.home_activity_option_menu, menu);
 	    return true;
 	}
 	
