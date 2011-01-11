@@ -54,8 +54,8 @@ public class AboutActivity extends Activity implements OnClickListener
 				// EMAIL
 				Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 				emailIntent.setType("plain/text");
-				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"gdevillele@gmail.com"});
-				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "[Meuh] - Feedback");
+				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"icecore.labs@gmail.com"});
+				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "[MooBox] - Feedback");
 				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 				break;
 				

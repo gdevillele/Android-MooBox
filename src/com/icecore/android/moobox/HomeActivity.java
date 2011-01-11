@@ -13,6 +13,7 @@ package com.icecore.android.moobox;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -44,9 +45,12 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	private AudioManager		myAudioManager;
 	private SoundPool 			mySoundPool;
 	private int 				sid_meuh;
-	
 	private LinearLayout		ll;
 	private boolean				state;
+	
+	// Settings
+	private 		SharedPreferences 	settings ;
+
 
 	
 	//	Methods
@@ -67,7 +71,7 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
         // Set a click listener on the screen
         ll.setOnClickListener(this);
         
-        // Sensor
+        // Retrieve the accelerometer sensor
         mySensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         try
         {
@@ -76,19 +80,20 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
         }
         catch(Error e)
         {
-        	Toast.makeText(this, "Error : can't acquire the sensor :(", Toast.LENGTH_LONG).show();
+        	Toast.makeText(this, "Error : "+e.getMessage(), Toast.LENGTH_LONG).show();
         }
         
-        //	SoundPool + sounds loading
+        //	SoundPool & sound loading
         this.mySoundPool	= new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         this.myAudioManager = (AudioManager)this.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-        this.sid_meuh 		= this.mySoundPool.load(this.getApplicationContext(), R.raw.boite_meuh, 0);   
+        this.sid_meuh 		= this.mySoundPool.load(this.getApplicationContext(), R.raw.moo, 0);   
+	
+        // Preferences
+        this.settings 		= this.getSharedPreferences( PreferencesActivity.MOOBOX_PREFS, 0);
 	}
 	
 	
-	
-	
-	// ACTIVITY resume AND stop
+	// Activity RESUME & STOP
 	//----------------------------------------------------------
 	@Override
 	protected void onResume()
@@ -107,13 +112,13 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	
 	// SENSORS
 	//----------------------------------------------------------
-	public void onAccuracyChanged(Sensor arg0, int arg1)
+	public void onAccuracyChanged(Sensor sensor, int accuracy)
 	{}
 
 	public void onSensorChanged(SensorEvent event)
 	{
-		//float x = event.values[0];
 		float y = event.values[1];
+		//float x = event.values[0];
 		//float z = event.values[2];
 		
 		if( y < (-7) && this.state == true )
@@ -136,18 +141,17 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	//------------------------------------------------------------
 	public void onClick(View v)
 	{
-		if( this.myAudioManager.isMusicActive() == false )
+		if( this.myAudioManager.isMusicActive() == false && this.settings.getBoolean( PreferencesActivity.MOOBOX_PREF_CLICK, true) == true )
 		{
 			this.mySoundPool.play(this.sid_meuh, 1, 1, 0, 0, 1);
 		}
 	}
 	
 	
-	//	BUTTONS (volume)
+	//	BUTTONS
 	//---------------------------------------------
 	public boolean onKey(View v, int keyCode, KeyEvent event)
 	{
-		// TODO Auto-generated method stub
 		return false;
 	}
     
@@ -166,7 +170,6 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
     			return true;
     		default:
     			break;
-    		// FLAG_REMOVE_SOUND_AND_VIBRATE
     		// FLAG_VIBRATE	
     	}
 		return false;
@@ -187,7 +190,6 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-	    // Handle item selection
 	    switch (item.getItemId())
 	    {
 	    	case R.id.about:		// Open AboutActivity
