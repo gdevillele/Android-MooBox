@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      android:versionName="0.3.0" android:versionCode="19" package="com.icecore.android.moobox">
+      package="com.icecore.android.moobox" android:versionName="0.3.1" android:versionCode="22">
     <application android:label="@string/app_name" android:icon="@drawable/app_icon">
         <activity android:label="@string/app_name" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:name="HomeActivity">
             <intent-filter>
@@ -14,5 +14,8 @@
 <activity android:name="PreferencesActivity" android:label="Moobox Preferences"></activity>
 </application>
     <uses-sdk android:minSdkVersion="4" />
+
+
+<uses-permission android:name="android.permission.VIBRATE"></uses-permission>
 
 </manifest> 

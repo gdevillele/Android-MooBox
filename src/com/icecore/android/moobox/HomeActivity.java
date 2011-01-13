@@ -21,6 +21,7 @@ import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,39 +41,47 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 {
 	//	Attributes
 	//-----------------------------------------------------
-	private SensorManager		mySensorManager;
-	private Sensor				accelerometer;
-	private AudioManager		myAudioManager;
-	private SoundPool 			mySoundPool;
-	private int 				sid_meuh;
-	private LinearLayout		ll;
-	private boolean				state;
+	private 	SensorManager		mySensorManager;
+	private 	Sensor				accelerometer;
+	private 	AudioManager		myAudioManager;
+	private 	SoundPool 			mySoundPool;
+	private 	int 				sid_meuh;
+	private 	LinearLayout		ll;
+	private 	boolean				state;
+	
+	// Vibrator
+	private		Vibrator 			vibrator;
 	
 	// Settings
-	private 		SharedPreferences 	settings ;
+	private 	SharedPreferences 	settings ;
 
 
-	
+	////////////////////////////////////////////////////////
 	//	Methods
+	////////////////////////////////////////////////////////
+	
+	// Activity
 	//-----------------------------------------------------
 	@Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        this.state = true;
         
+        // Set the phone starting state
+        this.state = true;
+
         // Inflate xml views/widgets
-        ll	= (LinearLayout) this.findViewById(R.id.ll);        
+        this.ll	= (LinearLayout) this.findViewById(R.id.ll);        
 
         // Disable the sleeping mode
-        ll.setKeepScreenOn(true);
+        this.ll.setKeepScreenOn(true);
         
         // Set a click listener on the screen
-        ll.setOnClickListener(this);
+        this.ll.setOnClickListener(this);
         
-        // Retrieve the accelerometer sensor
-        mySensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
+        // Accelerometer sensor
+        this.mySensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
         try
         {
         	accelerometer = mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -90,11 +99,11 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	
         // Preferences
         this.settings 		= this.getSharedPreferences( PreferencesActivity.MOOBOX_PREFS, 0);
+        
+        // Vibrator
+        this.vibrator 		= (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 	}
 	
-	
-	// Activity RESUME & STOP
-	//----------------------------------------------------------
 	@Override
 	protected void onResume()
 	{
@@ -110,25 +119,37 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	
 	
 	
+	//	MOO
+	//---------------------------------------------------------
+	private void moo()
+	{
+		this.mySoundPool.play(this.sid_meuh, 1, 1, 0, 0, 1);
+		if( this.settings.getBoolean( PreferencesActivity.MOOBOX_PREF_VIBRATE, false) == true )
+		{
+			this.vibrator.vibrate(1500);
+		}
+	}
+	
+	
+	
 	// SENSORS
 	//----------------------------------------------------------
-	public void onAccuracyChanged(Sensor sensor, int accuracy)
-	{}
+	public void onAccuracyChanged(Sensor sensor, int accuracy){}
 
 	public void onSensorChanged(SensorEvent event)
 	{
 		float y = event.values[1];
-		//float x = event.values[0];
-		//float z = event.values[2];
-		
-		if( y < (-7) && this.state == true )
+		if( this.settings.getBoolean( PreferencesActivity.MOOBOX_PREF_ACCELEROMETER, true) == true )
 		{
-			this.state = false;
-		}
-		else if( y > (7) && this.state == false && this.myAudioManager.isMusicActive() == false )
-		{
-			this.state = true;
-			this.mySoundPool.play(this.sid_meuh, 1, 1, 0, 0, 1);
+			if( y < (-7) && this.state == true )
+			{
+				this.state = false;
+			}
+			else if( y > (7) && this.state == false && this.myAudioManager.isMusicActive() == false )
+			{
+				this.state = true;
+				this.moo();
+			}
 		}
 	}
 	
@@ -141,9 +162,9 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 	//------------------------------------------------------------
 	public void onClick(View v)
 	{
-		if( this.myAudioManager.isMusicActive() == false && this.settings.getBoolean( PreferencesActivity.MOOBOX_PREF_CLICK, true) == true )
+		if( this.myAudioManager.isMusicActive() == false && this.settings.getBoolean( PreferencesActivity.MOOBOX_PREF_CLICK, false) == true )
 		{
-			this.mySoundPool.play(this.sid_meuh, 1, 1, 0, 0, 1);
+			this.moo();
 		}
 	}
 	
