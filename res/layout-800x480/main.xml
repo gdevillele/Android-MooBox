@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/ll" android:gravity="center_horizontal" android:background="#fff">
+
+
+
+
+
+
+
+
+
+<TextView android:layout_width="wrap_content" android:text="@string/moo" android:textStyle="bold" android:textColor="#000" android:layout_height="fill_parent" android:layout_weight="2" android:gravity="center_vertical" android:id="@+id/tv_moo" android:textSize="90px"></TextView>
+<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" android:id="@+id/iv_cow" android:src="@drawable/cow_tux_256"></ImageView>
+</LinearLayout>

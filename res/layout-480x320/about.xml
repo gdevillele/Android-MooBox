@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout android:orientation="vertical" android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+<LinearLayout android:id="@+id/LinearLayout02" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical"><TextView android:gravity="center_horizontal" android:layout_height="wrap_content" android:padding="10px" android:textStyle="bold" android:layout_width="fill_parent" android:id="@+id/tc_title" android:textSize="25px" android:textColor="#fff" android:background="#44aa44" android:text="@string/app_name"></TextView>
+<TableLayout android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/tl_center">
+
+<TableRow android:layout_width="fill_parent" android:id="@+id/TableRow02" android:layout_height="wrap_content" android:background="#444"><TextView android:paddingLeft="10px" android:id="@+id/TextView02" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="17px" android:text="Version : "></TextView>
+</TableRow>
+<TableRow android:layout_width="fill_parent" android:id="@+id/TableRow03" android:layout_height="wrap_content">
+
+<TextView android:textSize="20px" android:layout_height="wrap_content" android:id="@+id/TextView04" android:layout_width="wrap_content" android:text="@string/app_version_number" android:paddingLeft="10px" android:paddingTop="10px"></TextView>
+</TableRow>
+<TableRow android:layout_marginTop="10px" android:layout_width="fill_parent" android:id="@+id/TableRow05" android:layout_height="wrap_content" android:background="#444"><TextView android:text="Author : " android:paddingLeft="10px" android:id="@+id/TextView01" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="17px"></TextView>
+</TableRow>
+<TextView android:visibility="gone" android:text="All rights reserved" android:layout_width="wrap_content" android:paddingLeft="10px" android:id="@+id/TextView07" android:paddingTop="10px" android:layout_height="wrap_content"></TextView>
+
+
+
+
+
+
+
+
+
+
+<TableRow android:layout_width="fill_parent" android:id="@+id/TableRow04" android:layout_height="wrap_content"><TextView android:layout_width="wrap_content" android:paddingLeft="10px" android:id="@+id/TextView06" android:paddingTop="10px" android:layout_height="wrap_content" android:text="Icecore Labs - 2011"></TextView>
+
+</TableRow>
+</TableLayout>
+<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/tl_bottom" android:paddingBottom="10px"><TableRow android:layout_width="wrap_content" android:gravity="center_horizontal" android:layout_height="wrap_content" android:id="@+id/tr_contact"><Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/bt_contact" android:text="Send an email to the author" android:textSize="0.09in" android:padding="15px"></Button>
+</TableRow>
+</TableLayout>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#555" android:paddingBottom="5px" android:paddingTop="5px" android:gravity="center_horizontal" android:id="@+id/ll_bottom"><Button android:layout_height="0.3in" android:id="@+id/bt_close" android:layout_width="1in" android:textSize="0.15in" android:text="&lt; Back"></Button>
+</LinearLayout>
+
+
+
+
+</LinearLayout>
+</LinearLayout>
