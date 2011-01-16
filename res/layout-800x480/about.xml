@@ -40,7 +40,9 @@
 <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/tl_bottom" android:paddingBottom="10px"><TableRow android:layout_width="wrap_content" android:gravity="center_horizontal" android:layout_height="wrap_content" android:id="@+id/tr_contact"><Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/bt_contact" android:text="Send an email to the author" android:textSize="27px" android:padding="15px"></Button>
 </TableRow>
 </TableLayout>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#555" android:paddingBottom="5px" android:paddingTop="5px" android:gravity="center_horizontal" android:id="@+id/ll_bottom"><Button android:layout_height="0.3in" android:id="@+id/bt_close" android:layout_width="1in" android:textSize="0.15in" android:text="&lt; Back"></Button>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#555" android:paddingBottom="5px" android:paddingTop="5px" android:gravity="center_horizontal" android:id="@+id/ll_bottom"><Button android:id="@+id/bt_close" android:text="&lt; Back" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1" android:textSize="35px" android:paddingBottom="12px" android:paddingTop="12px"></Button>
+
+<Button android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:text="Licence" android:textSize="35px" android:paddingBottom="12px" android:paddingTop="12px" android:id="@+id/bt_licence"></Button>
 </LinearLayout>
 </LinearLayout>
 </LinearLayout>

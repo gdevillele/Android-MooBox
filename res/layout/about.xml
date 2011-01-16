@@ -6,23 +6,24 @@
 
 
 <LinearLayout android:id="@+id/LinearLayout02" android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical"><TextView android:gravity="center_horizontal" android:layout_height="wrap_content" android:padding="10px" android:textStyle="bold" android:layout_width="fill_parent" android:id="@+id/tc_title" android:textSize="25px" android:textColor="#fff" android:background="#44aa44" android:text="@string/app_name"></TextView>
-<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingLeft="10px" android:id="@+id/tl_center" android:layout_weight="1"><TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10px" android:id="@+id/TableRow01"><TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView03" android:text="Version : "></TextView>
-<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView04" android:text="@string/app_version_number"></TextView>
+<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingLeft="10px" android:id="@+id/tl_center" android:layout_weight="1"><TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10px" android:id="@+id/TableRow01"><TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView03" android:text="Version : " android:textSize="15px"></TextView>
+<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView04" android:text="@string/app_version_number" android:textSize="15px"></TextView>
 </TableRow>
-<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10px" android:id="@+id/TableRow02"><TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView02" android:text="Description : "></TextView>
-<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView01" android:text="@string/app_version_description"></TextView>
-</TableRow>
+
 <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10px" android:id="@+id/TableRow03" android:visibility="gone"><TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView05" android:text="Author : "></TextView>
 <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView06" android:text="Gaëtan de Villèle"></TextView>
 </TableRow>
-<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10px" android:id="@+id/TableRow04"><TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView07" android:text="Editor : "></TextView>
-<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView08" android:text="Icecore Labs"></TextView>
+<TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10px" android:id="@+id/TableRow04"><TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView07" android:text="Editor : " android:textSize="15px"></TextView>
+<TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/TextView08" android:text="Icecore Labs" android:textSize="15px"></TextView>
 </TableRow>
 </TableLayout>
 <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/tl_bottom" android:paddingBottom="10px"><TableRow android:layout_width="wrap_content" android:gravity="center_horizontal" android:layout_height="wrap_content" android:id="@+id/tr_contact"><Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/bt_contact" android:text="Send an email to the author" android:textSize="0.09in"></Button>
 </TableRow>
 </TableLayout>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#555" android:paddingBottom="5px" android:paddingTop="5px" android:gravity="center_horizontal" android:id="@+id/ll_bottom"><Button android:layout_height="0.3in" android:id="@+id/bt_close" android:layout_width="1in" android:text="Close" android:textSize="0.15in"></Button>
+<LinearLayout android:layout_width="fill_parent" android:paddingTop="5px" android:id="@+id/ll_bottom" android:gravity="center_horizontal" android:background="#555" android:layout_height="wrap_content" android:paddingBottom="5px">
+<Button android:id="@+id/bt_close" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1" android:text="&lt; Back" android:textSize="25px"></Button>
+<Button android:textSize="25px" android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:text="Licence" android:id="@+id/bt_licence"></Button>
 </LinearLayout>
+
 </LinearLayout>
 </LinearLayout>
