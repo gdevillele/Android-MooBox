@@ -2,7 +2,7 @@
 ///
 ///	@file			: HomeActivity.java
 ///	@superclass		: Activity
-///	@description	: App's Home Activity
+///	@description 	: App's Home Activity
 ///	@project		: MooBox
 ///	@author			: Gaetan de Villele - Icecore 2010
 ///
@@ -39,8 +39,9 @@ import com.icecore.android.moobox.PreferencesActivity;
 
 public class HomeActivity extends Activity implements SensorEventListener, OnClickListener, OnKeyListener
 {
-	//	Attributes
-	//-----------------------------------------------------
+	/////////////////////////////////////////////////////
+	//	ATTRIBUTES
+	/////////////////////////////////////////////////////
 	private 	SensorManager		mySensorManager;
 	private 	Sensor				accelerometer;
 	private 	AudioManager		myAudioManager;
@@ -57,53 +58,53 @@ public class HomeActivity extends Activity implements SensorEventListener, OnCli
 
 
 	////////////////////////////////////////////////////////
-	//	Methods
+	//	METHODS
 	////////////////////////////////////////////////////////
-	
+
 	// Activity
 	//-----------------------------------------------------
 	@Override
     public void onCreate(Bundle savedInstanceState)
 	{
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        
-        // Set the phone starting state
-        this.state = true;
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
 
-        // Inflate xml views/widgets
-        this.ll	= (LinearLayout) this.findViewById(R.id.ll);        
+		// Set the phone starting state
+		this.state = true;
 
-        // Disable the sleeping mode
-        this.ll.setKeepScreenOn(true);
-        
-        // Set a click listener on the screen
-        this.ll.setOnClickListener(this);
-        
-        // Accelerometer sensor
-        this.mySensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-        try
-        {
-        	accelerometer = mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        	mySensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
-        }
-        catch(Error e)
-        {
-        	Toast.makeText(this, "Error : "+e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        
-        //	SoundPool & sound loading
-        this.mySoundPool	= new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-        this.myAudioManager = (AudioManager)this.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-        this.sid_meuh 		= this.mySoundPool.load(this.getApplicationContext(), R.raw.moo, 0);   
-	
-        // Preferences
-        this.settings 		= this.getSharedPreferences( PreferencesActivity.MOOBOX_PREFS, 0);
-        
-        // Vibrator
-        this.vibrator 		= (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+		// Inflate xml views/widgets
+		this.ll	= (LinearLayout) this.findViewById(R.id.ll);        
+
+		// Disable the sleeping mode
+		this.ll.setKeepScreenOn(true);
+
+		// Set a click listener on the screen
+		this.ll.setOnClickListener(this);
+		
+		// Accelerometer sensor
+		this.mySensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
+		try
+		{
+			accelerometer = mySensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+			mySensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_FASTEST);
+		}
+		catch(Error e)
+		{
+			Toast.makeText(this, "Error : "+e.getMessage(), Toast.LENGTH_LONG).show();
+		}
+
+		//	SoundPool & sound loading
+		this.mySoundPool	= new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+		this.myAudioManager = (AudioManager)this.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
+		this.sid_meuh 		= this.mySoundPool.load(this.getApplicationContext(), R.raw.moo, 0);   
+
+		// Preferences
+		this.settings 		= this.getSharedPreferences( PreferencesActivity.MOOBOX_PREFS, 0);
+
+		// Vibrator
+		this.vibrator 		= (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 	}
-	
+
 	@Override
 	protected void onResume()
 	{

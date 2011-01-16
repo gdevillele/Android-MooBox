@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="moo">Moo !</string>
     
     <string name="app_name">MooBox</string>
-<string name="app_version_number">0.3.1</string>
+<string name="app_version_number">0.3.2</string>
 <string name="app_version_description">more features</string>
 </resources>
