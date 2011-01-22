@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.icecore.android.moobox" android:versionName="0.3.2" android:versionCode="23">
-    <application android:label="@string/app_name" android:icon="@drawable/app_icon">
+      package="com.icecore.android.moobox" android:versionCode="26" android:versionName="0.3.4">
+    <application android:label="@string/app_name" android:debuggable="false" android:icon="@drawable/hd_icon">
         <activity android:label="@string/app_name" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:name="HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

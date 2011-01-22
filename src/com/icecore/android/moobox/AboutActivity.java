@@ -85,7 +85,7 @@ public class AboutActivity extends Activity implements OnClickListener
 				// Afficher un dialog avec la GPL
 				Dialog dialog = new LicenceDialog(this);
 				dialog.setOwnerActivity(this);
-				dialog.setTitle("GPL Licence");
+				dialog.setTitle("GPL v3 Licence");
         		dialog.show();
 				break;
 			default :
